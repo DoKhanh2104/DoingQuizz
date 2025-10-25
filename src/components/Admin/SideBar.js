@@ -12,7 +12,8 @@ import {
 } from 'react-pro-sidebar';
 import sidebarBg from '../../assets/bg2.jpg'
 
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaTachometerAlt, FaGem, FaGithub, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
     return (
@@ -49,6 +50,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                         // suffix={<span className="badge red">New</span>}
                         >
                             Dashboard
+                            <Link to={"/admins"} />
                         </MenuItem>
                         {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
                     </Menu>
@@ -58,7 +60,10 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                             icon={<FaGem />}
                             title={"Features"}
                         >
-                            <MenuItem> Quản lý User</MenuItem>
+                            <MenuItem>
+                                Quản lý User
+                                <Link to={"/admins/manage-users"} />
+                            </MenuItem>
                             <MenuItem> Quản lý bài quizz</MenuItem>
                             <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
@@ -73,17 +78,15 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                             padding: '20px 24px',
                         }}
                     >
-                        <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
-                            target="_blank"
+                        <span
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
-                            <FaGithub />
+                            <FaHeart />
                             <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                                 Devi The Dev
                             </span>
-                        </a>
+                        </span>
                     </div>
                 </SidebarFooter>
             </ProSidebar>

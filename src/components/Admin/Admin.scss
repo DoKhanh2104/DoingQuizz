@@ -8,5 +8,30 @@
         }
     }
 
-    .admin-content {}
+    .admin-content {
+        width: 100%;
+
+        .admin-header {
+            height: 40px;
+            border: 1px solid green;
+        }
+
+        .admin-main {
+            border: 1px solid blue;
+        }
+    }
+}
+
+.sidebar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(75, 75, 75);
+    gap: 5px;
+    width: fit-content;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-left: 30px;
+    border: none;
 }
