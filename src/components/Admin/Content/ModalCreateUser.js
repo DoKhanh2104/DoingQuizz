@@ -14,7 +14,7 @@ const ModalCreateUser = ({ show, setShow }) => {
         setPassword("")
         setPreviewImage("")
         setRole("USER")
-        setUsername("")
+        // setUsername("")
     };
     // const handleShow = () => setShow(true);
 
