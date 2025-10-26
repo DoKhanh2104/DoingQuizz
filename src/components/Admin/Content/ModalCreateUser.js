@@ -3,10 +3,11 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FaPlus } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 const ModalCreateUser = ({ show, setShow }) => {
 
-
+    // Close modal
     const handleClose = () => {
         setShow(false)
         setEmail("");
@@ -25,6 +26,8 @@ const ModalCreateUser = ({ show, setShow }) => {
     const [image, setImage] = useState("")
     const [previewImage, setPreviewImage] = useState("")
 
+
+    //Preview Image
     const handleUploadFile = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
             setPreviewImage(URL.createObjectURL(event.target.files[0]))
@@ -33,7 +36,29 @@ const ModalCreateUser = ({ show, setShow }) => {
 
     }
 
+    //Func vadidated email
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    //Save data create user
     const handleSubmit = async () => {
+        //validate
+        const isValidEmail = validateEmail(email)
+        if (!isValidEmail) {
+            toast.error("Email invalid")
+            return;
+        }
+
+        if (!password) {
+            toast.error("Pass must be not null")
+        }
+
+        //submit
         const data = new FormData()
         data.append('email', email)
         data.append('password', password)
@@ -43,6 +68,14 @@ const ModalCreateUser = ({ show, setShow }) => {
 
         let res = await axios.post('http://localhost:8081/api/v1/participant', data)
         console.log(res)
+        if (res.data && res.data.EC === 0) {
+            toast.success(res.data.EM)
+            handleClose()
+        }
+
+        if (res.data && res.data.EC !== 0) {
+            toast.error(res.data.EM)
+        }
     }
 
     return (
