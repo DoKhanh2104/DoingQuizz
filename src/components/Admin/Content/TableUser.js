@@ -1,18 +1,14 @@
-import axios from 'axios';
+
 import Table from 'react-bootstrap/Table';
 
 const TableUser = () => {
 
-    const handleRender = async () => {
-        let res = await axios.get('http://localhost:8081/api/v1/participant/all')
-        let data = res.json()
-        console.log(data)
-    }
+
 
     return (
 
         <Table striped bordered hover>
-            handleRender()
+
             <thead>
                 <tr>
                     <th>#</th>

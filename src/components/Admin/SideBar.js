@@ -12,7 +12,7 @@ import {
 } from 'react-pro-sidebar';
 import sidebarBg from '../../assets/bg2.jpg'
 
-import { FaTachometerAlt, FaGem, FaGithub, FaHeart } from 'react-icons/fa';
+import { FaTachometerAlt, FaGem, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
